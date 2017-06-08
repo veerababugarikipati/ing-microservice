@@ -24,25 +24,28 @@ public class UsersControllerTest {
 	@Test
     public void createUserTest() {
         ResponseEntity<User> responseEntity =
-            restTemplate.postForEntity("/customer/create", new User(1,"veera","veerababu.g@hcl.com"), User.class);
+            restTemplate.postForEntity("/customer/create", new User(111,"veera","veerababu.g@hcl.com"), User.class);
         User user = responseEntity.getBody();
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals("veera", user.getName());
     }
-	@Test
-    public void deleteUserTest() {
-		restTemplate.delete("/customer/delete/1");
-    }
-	@Test
-    public void getUserByIdTestFail() {
-		restTemplate.getForEntity("/customer/1",User.class);
-		
-    }
 	
 	/*@Test
+    public void getUserByIdTestFail() {
+		restTemplate.getForEntity("/customer/111",User.class);
+		
+    }
+	
+	
+	@Test
     public void updateUserTest() {
-		restTemplate.postForEntity("/customer/update", new User(1,"veera","veerababu.g@hcl.com"), User.class);
+		restTemplate.postForEntity("/customer/update", new User(111,"veera","veerababu.g@hcl.com"), User.class);
 		
     }*/
+	@Test
+    public void deleteUserTest() {
+		restTemplate.delete("/customer/delete/111");
+    }
 	
 }
+
