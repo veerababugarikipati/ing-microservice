@@ -8,6 +8,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<start-class>com.hcl.spring.boot.training.Application</start-class>
+		<docker.image.prefix>customer</docker.image.prefix>
 		<hsqldb.version>2.4.0</hsqldb.version>
 		<logger-version>2.6.1</logger-version>
 		<java.version>1.8</java.version>
@@ -107,6 +109,22 @@
                 </reportPlugins>
             </configuration>
         </plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.2.3</version>
+				<configuration>
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>customer/src/main/resources</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
