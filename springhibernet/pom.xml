@@ -115,7 +115,7 @@
 				<version>0.2.3</version>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<dockerDirectory>${project.basedir}/src/main/resources</dockerDirectory>
+					<dockerDirectory>springhibernet/src/main/resources</dockerDirectory>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
